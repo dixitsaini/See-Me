@@ -1,5 +1,6 @@
-package com.example.seeme
+package com.example.seeme.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -44,6 +45,9 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     ClickCounterScreen(
                         viewModel = viewModel,
+                        onNavigateToRegistration = {
+                            startActivity(Intent(this, RegistrationActivity::class.java))
+                        },
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -53,7 +57,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ClickCounterScreen(viewModel: ClickCounterViewModel, modifier: Modifier = Modifier) {
+fun ClickCounterScreen(
+    viewModel: ClickCounterViewModel,
+    onNavigateToRegistration: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     val clickCount by viewModel.clickCounter.collectAsState()
 
     Column(
@@ -86,6 +94,13 @@ fun ClickCounterScreen(viewModel: ClickCounterViewModel, modifier: Modifier = Mo
         ) {
             Text("Reset", fontSize = 16.sp)
         }
+        Spacer(modifier = Modifier.height(32.dp))
+        Button(
+            onClick = onNavigateToRegistration,
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text("Go to Registration", fontSize = 16.sp)
+        }
     }
 }
 
@@ -93,7 +108,6 @@ fun ClickCounterScreen(viewModel: ClickCounterViewModel, modifier: Modifier = Mo
 @Composable
 fun ClickCounterScreenPreview() {
     SeeMeTheme {
-        // This is a placeholder preview
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -114,9 +128,9 @@ fun ClickCounterScreenPreview() {
             Button(onClick = {}) {
                 Text("Click Me!", fontSize = 18.sp)
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
             Button(onClick = {}) {
-                Text("Reset", fontSize = 16.sp)
+                Text("Go to Registration", fontSize = 16.sp)
             }
         }
     }
