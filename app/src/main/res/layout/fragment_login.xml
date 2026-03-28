@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.seeme.ui.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_24sdp"
+        android:background="@color/background">
+
+        <!-- Back Button -->
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back_button_desc"
+            android:src="@android:drawable/ic_menu_revert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Title -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/login_title"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <!-- Subtitle -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_32sdp"
+            android:gravity="center"
+            android:text="@string/login_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toTopOf="@+id/etPhoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <!-- Country Code Row -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llCountryCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:orientation="horizontal"
+            android:padding="@dimen/_12sdp"
+            android:background="@drawable/rounded_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="1.0">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCountryCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_16ssp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCountryArrow"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:src="@drawable/drop_down_arrow"
+                android:tint="@color/text_secondary" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Phone Number Input -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableStart="@android:drawable/ic_menu_call"
+            android:hint="@string/phone_number_hint"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:text="@={viewModel.phoneNumber}"
+            app:layout_constraintBottom_toTopOf="@+id/btnSendOtp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llCountryCode" />
+
+        <!-- Send OTP Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSendOtp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/button_blue"
+            android:enabled="@{viewModel.isSendOtpEnabled}"
+            android:text="@string/btn_send_otp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+
+        <!-- Terms and Privacy -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:gravity="center"
+            android:text="@string/terms_and_privacy"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

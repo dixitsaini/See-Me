@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary Colors -->
+    <color name="primary">#6200EE</color>
+    <color name="primary_variant">#3700B3</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#03DAC6</color>
+    <color name="secondary_variant">#018786</color>
+    <color name="on_secondary">#000000</color>
+
+    <!-- UI Colors -->
+    <color name="background">#FFFFFF</color>
+    <color name="on_background">#000000</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#000000</color>
+    <color name="error">#B00020</color>
+    <color name="on_error">#FFFFFF</color>
+
+    <!-- Custom Colors for Login -->
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#757575</color>
+    <color name="button_blue">#1976D2</color>
+
+    <!-- Legacy / Material 2 default palette -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

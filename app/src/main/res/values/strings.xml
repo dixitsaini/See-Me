@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">See me</string>
+    <string name="back_button_desc">Back</string>
+    <string name="login_title">Login with Phone</string>
+    <string name="login_subtitle">Enter your phone number to receive OTP</string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="phone_number_edit_hint">Enter 10-digit phone number</string>
+    <string name="btn_send_otp">Send OTP</string>
+    <string name="terms_and_privacy">By continuing, you agree to our Terms &amp; Privacy Policy</string>
+    <string name="error_phone_number">Please enter a valid 10-digit phone number</string>
+    <string name="sending_otp">Sending OTP...</string>
+
+    <!-- Country Selection -->
+    <string name="select_country">Select Country</string>
+    <string name="search_country">Search country</string>
+
+    <!-- OTP -->
+    <string name="otp_title">Verify Phone</string>
+    <string name="otp_subtitle">Enter the 6-digit code sent to %1$s</string>
+    <string name="btn_verify">Verify</string>
+    <string name="resend_otp">Resend OTP</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="name_hint">Full Name</string>
+    <string name="email_hint">Email Address</string>
+    <string name="btn_save">Save Profile</string>
 </resources>

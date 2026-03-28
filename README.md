@@ -3,28 +3,29 @@
 SeeMe is a modern Android application built with Jetpack components and Material Design.
 
 ## Features
-- **Authentication**: Phone-based authentication using Firebase.
-- **UI Architecture**: Implements Data Binding and ConstraintLayout for efficient, responsive UI.
+- **Authentication**: Phone-based authentication using Firebase (Phone & Email).
+- **Responsive UI**: Integrated **SDP** and **SSP** for consistent scaling across devices.
+- **UI Architecture**: Data Binding, ConstraintLayout, and Base Classes for efficient development.
 - **Theming**: Full support for Day/Night (Dark Mode) using semantic color resources.
-- **Navigation**: Uses Jetpack Navigation component for fragment transitions.
-- **Persistence**: Integrated with Room Database for local data management.
+- **Navigation**: Jetpack Navigation component with fragmented transitions.
+- **Persistence**: Room Database for local data and **PreferenceHelper** abstraction for SharedPreferences.
 
 ## Tech Stack
 - **Language**: Kotlin
-- **UI**: XML with Data Binding / Jetpack Compose
+- **Architecture**: MVVM with Base Classes (BaseActivity, BaseFragment).
+- **UI Libraries**: AppCompat, ConstraintLayout, Material Components, SDP, SSP.
 - **Database**: Room
-- **Backend**: Firebase (Auth, Messaging)
-- **Architecture**: MVVM
-- **Libraries**: AppCompat, ConstraintLayout, Navigation Component, Firebase BOM.
+- **Backend**: Firebase Auth, Firebase Cloud Messaging (FCM).
 
 ## Project Structure
-- `app/src/main/java`: Source code (Activities, Fragments, ViewModels, Data).
-- `app/src/main/res/values`: String and Color resources (Day mode).
-- `app/src/main/res/values-night`: Color resources for Night mode.
-- `app/src/main/res/layout`: Layout definitions using ConstraintLayout and Data Binding.
+- `app/src/main/java/com/example/seeme/activity`: Base and specialized activities.
+- `app/src/main/java/com/example/seeme/ui/fragments`: Fragment hierarchy including Registration, OTP, and Country Selection.
+- `app/src/main/java/com/example/seeme/data`: Data persistence (Room, PreferenceHelper).
+- `app/src/main/res/layout`: Optimized XML layouts using scalable units.
 
 ## Recent Updates
-- Fixed theme-related crashes by aligning Material/AppCompat themes.
-- Refactored UI to use `ConstraintLayout` for better performance.
-- Moved hardcoded strings to `strings.xml`.
-- Implemented a unified color palette for Light and Dark themes.
+- **Base Architecture**: Implemented `BaseActivity` and `BaseFragment` to centralize generic logic (Keyboard, Edge-to-Edge).
+- **Scalability**: Replaced static `dp`/`sp` with `sdp`/`ssp` for multi-device support.
+- **Security**: Hardened `.gitignore` and removed sensitive API keys from version control.
+- **Abstraction**: Added `PreferenceHelper` singleton to decouple preference logic from UI.
+- **Optimization**: Unified color palette and centralized all strings for internationalization.

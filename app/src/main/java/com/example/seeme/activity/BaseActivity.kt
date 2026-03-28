@@ -8,8 +8,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.seeme.data.PreferenceHelper
 
 abstract class BaseActivity : AppCompatActivity() {
+
+    protected val prefHelper: PreferenceHelper by lazy {
+        PreferenceHelper.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

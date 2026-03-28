@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.seeme.ui.OtpViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@android:color/white"
+        android:gravity="center">
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="24dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Back" />
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter OTP"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We sent a 6-digit code to your phone"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="32dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- OTP Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="OTP Code"
+            app:startIconDrawable="@android:drawable/ic_lock_lock">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etOtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="@={viewModel.otp}"
+                android:maxLength="6"
+                android:hint="Enter 6-digit OTP" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Verify OTP Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerifyOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Verify OTP"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:enabled="@{viewModel.isVerifyOtpEnabled}"
+            app:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white" />
+
+        <!-- Resend OTP -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnResendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Resend OTP"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Timer Text -->
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend OTP in 30s"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</layout>

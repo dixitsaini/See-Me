@@ -2,8 +2,9 @@ package com.example.seeme.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 
-class PreferenceHelper(context: Context) {
+class PreferenceHelper private constructor(context: Context) {
 
     private val sharedPref: SharedPreferences =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -27,21 +28,21 @@ class PreferenceHelper(context: Context) {
 
     var userId: String?
         get() = sharedPref.getString(KEY_USER_ID, null)
-        set(value) = sharedPref.edit().putString(KEY_USER_ID, value).apply()
+        set(value) = sharedPref.edit { putString(KEY_USER_ID, value) }
 
     var userEmail: String?
         get() = sharedPref.getString(KEY_USER_EMAIL, null)
-        set(value) = sharedPref.edit().putString(KEY_USER_EMAIL, value).apply()
+        set(value) = sharedPref.edit { putString(KEY_USER_EMAIL, value) }
 
     var userName: String?
         get() = sharedPref.getString(KEY_USER_NAME, null)
-        set(value) = sharedPref.edit().putString(KEY_USER_NAME, value).apply()
+        set(value) = sharedPref.edit { putString(KEY_USER_NAME, value) }
 
     var fcmToken: String?
         get() = sharedPref.getString(KEY_FCM_TOKEN, null)
-        set(value) = sharedPref.edit().putString(KEY_FCM_TOKEN, value).apply()
+        set(value) = sharedPref.edit { putString(KEY_FCM_TOKEN, value) }
 
     fun clear() {
-        sharedPref.edit().clear().apply()
+        sharedPref.edit { clear() }
     }
 }
