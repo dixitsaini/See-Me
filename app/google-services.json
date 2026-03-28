@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "86517006009",
+    "project_id": "see-me-c2979",
+    "storage_bucket": "see-me-c2979.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86517006009:android:07cd21225e2450120e2568",
+        "android_client_info": {
+          "package_name": "com.example.seeme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86517006009-quci1e2id0ojir4i1cjb3jb1oli1jcsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.seeme",
+            "certificate_hash": "425cfd70f91384cdf011b8401447264ef892c42d"
+          }
+        },
+        {
+          "client_id": "86517006009-0pib2e1p68ce1biblqppkaj1rqn7bfhc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJu0Y_3BWfjq-Fv8-EUiYja0qFWpEtT_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86517006009-0pib2e1p68ce1biblqppkaj1rqn7bfhc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
