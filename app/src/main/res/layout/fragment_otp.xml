@@ -4,106 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.example.seeme.ui.OtpViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:background="@android:color/white"
-        android:gravity="center">
+        android:background="@color/background"
+        android:padding="@dimen/_24sdp">
 
         <!-- Back Button -->
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="start"
-            android:layout_marginBottom="24dp"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back_button_desc"
             android:src="@android:drawable/ic_menu_revert"
-            android:contentDescription="Back" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Title -->
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter OTP"
-            android:textSize="24sp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="@string/otp_title"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_24ssp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="center_horizontal" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Subtitle -->
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="We sent a 6-digit code to your phone"
-            android:textSize="16sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginBottom="32dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/otp_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-        <!-- OTP Input -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:hint="OTP Code"
-            app:startIconDrawable="@android:drawable/ic_lock_lock">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etOtp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:text="@={viewModel.otp}"
-                android:maxLength="6"
-                android:hint="Enter 6-digit OTP" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <!-- OTP Input Container -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etOtp"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:background="@drawable/rounded_card"
+            android:gravity="center"
+            android:hint="000000"
+            android:inputType="number"
+            android:letterSpacing="0.5"
+            android:maxLength="6"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:text="@={viewModel.otp}"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
         <!-- Verify OTP Button -->
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnVerifyOtp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Verify OTP"
-            android:textSize="16sp"
-            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:background="@color/button_blue"
             android:enabled="@{viewModel.isVerifyOtpEnabled}"
-            app:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@android:color/white" />
+            android:onClick="@{() -> viewModel.onVerifyOtpClick()}"
+            android:text="@string/btn_verify"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etOtp" />
 
-        <!-- Resend OTP -->
-        <com.google.android.material.button.MaterialButton
+        <!-- Resend OTP Layout -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnResendOtp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Resend OTP"
-            android:textSize="14sp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@android:color/transparent"
+            android:enabled="@{viewModel.canResend}"
+            android:onClick="@{() -> viewModel.onResendOtpClick()}"
+            android:text="@string/resend_otp"
             android:textAllCaps="false"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="@android:color/holo_blue_dark"
-            android:layout_gravity="center_horizontal" />
+            android:textColor="@{viewModel.canResend ? @color/button_blue : @color/text_secondary}"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnVerifyOtp" />
 
         <!-- Timer Text -->
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resend OTP in 30s"
-            android:textSize="12sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@{viewModel.timerText}"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="@{viewModel.canResend ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnResendOtp"
+            tools:text="00:30" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

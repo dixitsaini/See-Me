@@ -19,11 +19,11 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun checkUserSession() {
-        if (prefHelper.userId != null) {
+//        if (prefHelper.userId != null) {
             startActivity(Intent(this, MainActivity::class.java))
-        } else {
-            startActivity(Intent(this, RegistrationActivity::class.java))
-        }
+//        } else {
+//            startActivity(Intent(this, RegistrationActivity::class.java))
+//        }
         finish()
     }
 }

@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp">
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="@dimen/_12sdp">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFlag"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/country_in" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCountryName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Country"
+        android:layout_marginStart="@dimen/_12sdp"
         android:textColor="@color/text_primary"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvDialCode"
-        app:layout_constraintHorizontal_bias="0" />
+        app:layout_constraintStart_toEndOf="@id/ivFlag"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="India" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDialCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+91"
         android:textColor="@color/text_secondary"
-        android:textSize="14sp"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:text="+91" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

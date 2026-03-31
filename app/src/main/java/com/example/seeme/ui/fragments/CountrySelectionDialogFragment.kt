@@ -1,30 +1,32 @@
 package com.example.seeme.ui.fragments
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seeme.databinding.FragmentCountrySelectionBottomSheetDialogBinding
 import com.example.seeme.ui.fragments.country.CountrySelectFragmentViewModel
 import com.example.seeme.ui.fragments.country.adapter.CountrySelectionAdapter
 import com.example.seeme.ui.fragments.country.item.CountryItem
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CountrySelectionBottomSheetDialogFragment(
+class CountrySelectionDialogFragment(
     private val countrySelectionInterface: CountrySelectionInterface,
     private val countryCode: String = "+91"
-) : BottomSheetDialogFragment(), CountrySelectionInterface {
+) : DialogFragment(), CountrySelectionInterface {
 
     private var _binding: FragmentCountrySelectionBottomSheetDialogBinding? = null
     private val binding get() = _binding!!
 
     private val countrySelectFragmentViewModel: CountrySelectFragmentViewModel by viewModels()
     private lateinit var countrySelectionAdapter: CountrySelectionAdapter
-    private var countryList: List<CountryItem> = emptyList()
 
     private val searchBarWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -36,6 +38,17 @@ class CountrySelectionBottomSheetDialogFragment(
             } else {
                 countrySelectFragmentViewModel.searchCountry(query)
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.apply {
+            setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+            )
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
 
@@ -63,7 +76,6 @@ class CountrySelectionBottomSheetDialogFragment(
 
         // Observe Data
         countrySelectFragmentViewModel.countryList.observe(viewLifecycleOwner) { list ->
-            countryList = list
             countrySelectionAdapter.setItems(list)
         }
 

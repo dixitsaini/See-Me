@@ -32,6 +32,7 @@ android {
     buildFeatures {
         compose true
         dataBinding true
+        buildConfig true
     }
 }
 
@@ -74,6 +75,11 @@ dependencies {
     implementation libs.androidx.credentials
     implementation libs.androidx.credentials.play.services.auth
     implementation libs.googleid
+
+    // OSMDroid & Location
+    implementation libs.osmdroid.android
+    implementation libs.play.services.location
+    implementation libs.androidx.preference.ktx
 
     ksp libs.androidx.room.compiler
     testImplementation libs.junit
